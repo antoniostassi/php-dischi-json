@@ -4,7 +4,8 @@ createApp({
 
     data() {
         return {
-            albumsData: []
+            albumsData: [],
+            author: ''
         }
     },
     created() {
@@ -15,7 +16,11 @@ createApp({
         apiCall() {
             axios
 
-            .get('http://localhost/php-dischi-json/backend/api.php')
+            .get('http://localhost/php-dischi-json/backend/api.php', {
+                params: {
+                   author: this.author
+                }
+            })
 
             .then((res) => {
                 this.albumsData = (res.data);
