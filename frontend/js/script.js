@@ -1,20 +1,28 @@
 const { createApp } = Vue
 
-  createApp({
+createApp({
+
     data() {
-      return {
-        message: 'Hello Vue!'
-      }
+        return {
+            albumsData: []
+        }
     },
     created() {
-      axios
+        this.apiCall();
+    },
 
-      .get('http://localhost/php-dischi-json/backend/api.php')
+    methods: {
+        apiCall() {
+            axios
 
-      .then((res) => {
-        console.log(res.data);
-        console.log("Helelo");
-      })
-      
+            .get('http://localhost/php-dischi-json/backend/api.php')
+
+            .then((res) => {
+                this.albumsData = (res.data);
+            })
+        },
+        myLog() {
+            console.log(this.albumsData);
+        }
     }
-  }).mount('#app')
+}).mount('#app')

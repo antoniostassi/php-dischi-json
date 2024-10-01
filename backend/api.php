@@ -1,10 +1,8 @@
 <?php
-/* header("Access-Control-Allow-Origin: *");
-header("Access-Control-Allow-Headers: X-Requested-With"); */
 
-$albums_data = file_get_contents('http://localhost/php-dischi-json/backend/database.json');
+$albumsData = file_get_contents(__DIR__."\database.json");
 
 header('Content-Type: application/json');
 
-echo ($albums_data);
-?>
+echo $albumsData;
+
